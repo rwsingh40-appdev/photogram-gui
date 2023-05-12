@@ -1,0 +1,42 @@
+<h1>Photo Details</h1>
+
+<p><%#=@photo_id%></p>
+<p><%#=@photo.inspect%></p>
+
+
+<dl>
+  <dt>Image</dt>
+  <dd><img src="<%=@photo.image%>" alt=""></dd>
+  <dt>Caption</dt>
+  <dd><%=@photo.caption%></dd>  
+  <dt>Owner</dt>
+  <dd><%=@photo.poster.username%></dd>
+  <dt>Posted</dt>
+  <dd><%=@photo.created_at%></dd>
+  <dt>Edit photo</dt>
+  <dd>PLACEHOLDER</dd>
+  <dt>Delete photo</dt>
+  <dd>PLACEHOLDER</dd>
+</dl>
+
+<h1>Comments</h1>
+
+<table>
+  <tr>
+    <th>Commenter</th>
+    <th>Comment</th>
+    <th>Posted</th>
+  </tr>
+  <%@photo.comments.each do |a_comment|%>
+    <tr>
+      <td><%=a_comment.commenter.username%></td>
+      <td><%=a_comment.body%></td>
+      <td><%=a_comment.created_at%></td>
+    </tr>
+  <%end%>
+</table>
+
+
+<h1>Add a new comment</h1>
+
+<p>form placehodler</p>
