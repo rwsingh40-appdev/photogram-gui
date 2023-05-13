@@ -17,11 +17,11 @@
   <dd>
     <form action="/update_photo/<%=@photo.id%>">
       <label for="image_box">Image</label>
-      <input type="text" id = "image_box" name="Image" value="<%=@photo.image%>%">
+      <input type="text" id = "image_box" name="Image" value="<%=@photo.image%>">
 
       <label for="caption_box">Caption</label>
-      <input type="text" id = "caption_box" name="Caption" value="<%=@photo.caption%>%">
-
+      <textarea name="Caption" id = "caption_box"><%=@photo.caption%></textarea>
+       <!-- <textarea name="Caption" id="caption_box" placeholder ="Enter a caption for the photo..."></textarea> -->
       <button>Update photo</button>
     </form>
   </dd>
@@ -47,6 +47,17 @@
 </table>
 
 
-<h1>Add a new comment</h1>
+<h3>Add a new comment</h3>
 
-<p>form placehodler</p>
+<form action="/insert_comment_record">
+  <label for="browser_photo_id">Photo ID</label>
+  <input id="browser_photo_id" type="text" value="<%=@photo.id%>" name="input_photo_id">
+
+  <label for="browser_author_id">Author ID</label>
+  <input id="browser_author_id" type="text" name="input_author_id">
+
+  <label for="browser_comment">Comment</label>
+  <textarea id="browser_comment" name="input_body" placeholder="Enter a comment..."></textarea>
+
+  <button>Add comment</button>
+</form>
