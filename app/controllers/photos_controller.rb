@@ -19,10 +19,6 @@ class PhotosController < ApplicationController
     end
 
     def create
-      # target_id = params.fetch("photo_id").to_i
-      # target_photo = Photo.where({:id => target_id}).first
-      # target_photo.destroy
-      # Parameters: {"Image"=>"a", "Caption"=>"b", "Owner ID"=>"c"}
       input_image = params.fetch("Image")
       input_caption = params.fetch("Caption")
       input_owner_id = params.fetch("Owner ID")
@@ -31,8 +27,18 @@ class PhotosController < ApplicationController
       a_new_photo.caption = input_caption
       a_new_photo.owner_id = input_owner_id
       a_new_photo.save
-      # render({:template => "photo_templates/create.html.erb"})
       redirect_to("/photos/#{a_new_photo.id}")
+    end
+    def update
+      target_photo_id = params.fetch("photo_id")
+      updated_photo_image = params.fetch("Image")
+      updated_photo_caption = params.fetch("Caption")
+      target_photo = Photo.where({:id => target_photo_id}).first
+      target_photo.image = updated_photo_image
+      target_photo.caption = updated_photo_caption
+      target_photo.save
+      redirect_to("/photos/#{target_photo.id}")
+      
     end
 
 end
